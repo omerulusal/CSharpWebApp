@@ -8,7 +8,7 @@ public class HomeController : Controller
 {
     public string Index()
     {
-        return "Main Page";
+        return "Anasayfa";
     }
     public string About()
     {
