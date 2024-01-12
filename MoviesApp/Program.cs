@@ -25,23 +25,7 @@ app.MapControllerRoute(
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.MapControllerRoute(
-    name: "about",
-    pattern: "about",
-    defaults: new { controller = "Home", action = "About" }
-    );
-
-
-app.MapControllerRoute(
-    name: "movieList",
-    pattern: "movies/list",
-    defaults: new { controller = "Movies", action = "List" }
-    );
-
-//MapContrellerRoute urldeki yazýlacak alaný belirtir.
-app.MapControllerRoute(
-    name: "movieList",
-    pattern: "movies/details",//urlde tanýmlanacak alan
-    defaults: new { controller = "Movies", action = "Details" }
-    //defaults: urlde movies/details yazýnca calýþacak alan
+    name: "default",
+    pattern: "{controller}/{action}"
     );
 app.Run();
