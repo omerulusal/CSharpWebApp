@@ -20,6 +20,7 @@ public class HomeController : Controller
         m.Description = filmAciklama;
         m.Director = filmYonetmen;
         m.Actors = filmOyuncular;
+        m.ImageUrl = "avengers.jpeg";
 
         return View(m);
         //m adýyla olusturdugum modeli Movie klasörundeki Index.cshtml ye yolladým.

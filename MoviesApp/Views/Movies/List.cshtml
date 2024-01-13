@@ -1,4 +1,4 @@
-﻿@model List<Movie>;
+﻿@model MovieAndGenreModel;
 
 @*
 *MovieControllerdan List veri tipinde veri göndermiştim onu buradan karşıladım.
@@ -6,29 +6,18 @@
 *@
 
 @section sidebar {
-    @await Html.PartialAsync("_sidebar")
-    @* list sayfasında _sidebar partial ıda gelicektir *@
+    @await Html.PartialAsync("_sidebar",Model.Genres)
+    @* list sayfasında _sidebar partialıda gelicektir ve bu partiala Model.Genres ı yolladım*@
 }
 
 <div class="container">
     <h1>Film Listesi</h1>
     <div id="filmler">
         <div class="film">
-            @foreach (var film in Model)
+            @foreach (var film in Model.Movies)//MovieAndGenreModel icindeki Movies methodundan gelen film listesinde herbir filmi gezicektir.
             {
-                <img src="/img/@film.ImageUrl" alt="@film.Title" />
-                @*wwwroot icersinde img kalsorunde bulunan imageları yaz*@
-                <p class="p-5">Film Baslık: @film.Title</p>
-                <p>Film Acıklama: @film.Description</p>
-                <p>Film Yonetmen: @film.Director</p>
-                <p>
-                    <ul>
-                        @foreach (var actor in film.Actors)
-                        {
-                            <li>@actor</li>
-                        }
-                    </ul>
-                </p>
+                @await Html.PartialAsync("_film", film)
+                @* _film adlı partialsınımı bu sayfaya ekledim ve verileri film adıyla _filme yolladım*@
             }
         </div>
     </div>

@@ -25,9 +25,24 @@ namespace MoviesApp.Controllers
                 new Movie {Title = "Film2",Description="A1",Actors=new string[]{"john Doe","Jane Doe"},Director="OmerUlusal",ImageUrl="avengers.jpeg"},
                 new Movie {Title = "Film3",Description="A1",Actors=new string[]{"john Doe","Jane Doe"},Director="OmerUlusal",ImageUrl="avengers.jpeg"}
             };
-            return View(filmListesi);
 
+            var turListesi = new List<Genre>(){
+                new Genre {Name="Comedy"},
+                new Genre {Name="Action"},
+                new Genre {Name="Drama"},
+                new Genre {Name="Romance"},
+                new Genre {Name="War"}
+            };
+
+            var modeller = new MovieAndGenreModel()
+            {
+                Movies = filmListesi,
+                Genres = turListesi
+                //olusturdugum filmleri ve turleri modeller degişkenine atadım.
+            };
+            return View(modeller);//list sayfasına modelleri gonderdim
         }
+
         //localhost:5000/movies/details
         public IActionResult Details()
         {

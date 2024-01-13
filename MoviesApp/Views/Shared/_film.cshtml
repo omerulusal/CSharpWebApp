@@ -1,0 +1,38 @@
+﻿@model Movie;
+@*
+HomeControllerdaki modeli cagırdım fakat model klasorunde olusturdugum Movie classınıda yazdım.
+Normalde MovieApp.Models.Movie olarak cagırmam gerekirdi bu yolu kısatmak icin _ViewImports dosyasına yazdım.
+Ozetle sayfanın modeli Movie nesnesi
+*@
+<div id="filmler">
+    <div class="card mb-3" style="max-width: 540px;">
+        <div class="row g-0">
+            <div class="col-md-4">
+                <img src="/img/@Model.ImageUrl" class="img-fluid rounded-start" alt="@Model.Title">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title">@Model.Title</h5>
+                    <p class="card-text">@Model.Description</p>
+                    <p class="card-text">
+                        <small class="text-body-secondary">
+                            @Model.Director
+                        </small>
+                    </p>
+                    <p>
+                        <ul>
+                            @foreach (var actor in Model.Actors)
+                            {
+                                <li>@actor</li>
+                            }
+                        </ul>
+                    </p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
