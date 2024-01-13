@@ -6,12 +6,22 @@ namespace MoviesApp.Controllers;
 
 public class HomeController : Controller
 {
-    public string Index()
+    public IActionResult Index()
     {
-        return "Anasayfa";
+        string filmbasligi = "Avengers";
+        string filmAciklama = "Avengers: Endgame";
+        string filmYonetmen = "OmerUlusal";
+        string[] filmOyuncular = {
+            "Robert Downey Jr"," Chris Evans","Scarlett Johansson,","Tom Holland",
+        };
+        ViewBag.Filmbasligi = filmbasligi;
+        ViewBag.FilmAciklama = filmAciklama;
+        ViewBag.FilmYonetmen = filmYonetmen;
+        ViewBag.FilmOyuncular = filmOyuncular;
+        return View();
     }
-    public string About()
+    public IActionResult About()
     {
-        return "Hakkýmýzda";
+        return View();
     }
 }

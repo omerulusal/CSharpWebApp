@@ -1,0 +1,7 @@
+﻿Controllerda Onregin MoviesController olusturdum bunun View'i 
+ise view klasörundeki Movies klasörudur.
+
+
+
+
+

@@ -3,16 +3,28 @@
 namespace MoviesApp.Controllers
 {
     public class MoviesController : Controller
+
     {
-        //localhost:5000/movies/list
-        public string List()
+
+        /*
+         normalde localhost:5000/movies yazarsam sayfa bulunamadı hatası alırdım cunku urlde en az 2 bolme 
+         olmaliydı bunu Index erisim methodu ekleyince /movies icin varsayilan index sayfası oldu.
+         */
+        public IActionResult Index()
         {
-            return "Film Listesi";
+            return View();
+        }
+
+        //localhost:5000/movies/list
+        public IActionResult List()
+        {
+            return View();
+
         }
         //localhost:5000/movies/details
-        public string Details()
+        public IActionResult Details()
         {
-            return "Film Detayları";
+            return View();
         }
     }
 }

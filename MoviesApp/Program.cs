@@ -21,11 +21,9 @@ app.UseRouting();
 app.UseAuthorization();
 
 app.MapControllerRoute(
-    name: "home",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
-
-app.MapControllerRoute(
     name: "default",
-    pattern: "{controller}/{action}"
+    pattern: "{controller=Home}/{action=Index}/{id?}"
     );
+//!Uygulama acýldýgýnda Default olarak HomeController.csteki Index calýþýr 
+//!fakat controller ve action dinamik rota yani urlde diyelimki about yazdým uygulama about sayfasýný acar
 app.Run();
