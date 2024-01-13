@@ -1,44 +1,24 @@
-﻿<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>MoviesApp</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/MoviesApp.styles.css" asp-append-version="true" />
-</head>
-<body>
-    <div class="container">
-        <main role="main" class="pb-3">
-            Index Page
-        </main>
-        <h1>Film Listesi</h1>
-        <div itemid="filmler">
-            <div class="film">
-                <p>@ViewBag.Filmbasligi</p>
-                <p>@ViewBag.FilmAciklama</p>
-                <p>@ViewBag.FilmYonetmen </p>
-                <p>
-                    <ul>
-                        @foreach (var oyuncu in ViewBag.FilmOyuncular)
-                        {
-                            <li>@oyuncu</li>
-                        }
-                    </ul>
-                </p>
-            </div>
+﻿@model Movie;
+@*
+HomeControllerdaki modeli cagırdım fakat model klasorunde olusturdugum Movie classınıda yazdım.
+Normalde MovieApp.Models.Movie olarak cagırmam gerekirdi bu yolu kısatmak icin _ViewImports dosyasına yazdım.
+Ozetle sayfanın modeli Movie nesnesi
+*@
+<div class="container  ">
+    <h1>Film Listesi</h1>
+    <div id="filmler">
+        <div class="film">
+            <p>@Model.Title</p>
+            <p>@Model.Description </p>
+            <p>@Model.Director</p>
+            <p>
+                <ul>
+                    @foreach (var actor in Model.Actors)
+                    {
+                        <li>@actor</li>
+                    }
+                </ul>
+            </p>
         </div>
     </div>
-
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2024 - MoviesApp - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-    </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-</body>
-</html>
-
+</div>

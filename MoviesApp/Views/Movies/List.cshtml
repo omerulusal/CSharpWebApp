@@ -1,27 +1,30 @@
-﻿<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>MoviesApp</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/MoviesApp.styles.css" asp-append-version="true" />
-</head>
-<body>
-    <div class="container">
-        <main role="main" class="pb-3">
-            MOVIES List Page
-        </main>
-    </div>
+﻿@model List<Movie>;
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2024 - MoviesApp - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+@*
+*MovieControllerdan List veri tipinde veri göndermiştim onu buradan karşıladım.
+*Dahasonra modelin yolunuda (namespace'i'(Movie.csin yolu)) tanımladım
+*@
+
+<div class="container">
+    <h1>Film Listesi</h1>
+    <div id="filmler">
+        <div class="film">
+            @foreach (var film in Model)
+            {
+                <img src="/img/@film.ImageUrl" alt="@film.Title" />
+                @*wwwroot icersinde img kalsorunde bulunan imageları yaz*@
+                <p class="p-5">Film Baslık: @film.Title</p>
+                <p>Film Acıklama: @film.Description</p>
+                <p>Film Yonetmen: @film.Director</p>
+                <p>
+                    <ul>
+                        @foreach (var actor in film.Actors)
+                        {
+                            <li>@actor</li>
+                        }
+                    </ul>
+                </p>
+            }
         </div>
-    </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-</body>
-</html>
+    </div>
+</div>

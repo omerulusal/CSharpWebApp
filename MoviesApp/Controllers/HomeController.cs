@@ -14,11 +14,15 @@ public class HomeController : Controller
         string[] filmOyuncular = {
             "Robert Downey Jr"," Chris Evans","Scarlett Johansson,","Tom Holland",
         };
-        ViewBag.Filmbasligi = filmbasligi;
-        ViewBag.FilmAciklama = filmAciklama;
-        ViewBag.FilmYonetmen = filmYonetmen;
-        ViewBag.FilmOyuncular = filmOyuncular;
-        return View();
+
+        var m = new Movie();//Movie.cs classýndan nesne turettim
+        m.Title = filmbasligi;
+        m.Description = filmAciklama;
+        m.Director = filmYonetmen;
+        m.Actors = filmOyuncular;
+
+        return View(m);
+        //m adýyla olusturdugum modeli Movie klasörundeki Index.cshtml ye yolladým.
     }
     public IActionResult About()
     {

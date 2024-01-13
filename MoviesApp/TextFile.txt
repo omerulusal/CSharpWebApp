@@ -1,0 +1,10 @@
+﻿wwwroot ozel bir klasör adıdır burada client tarafında gorunecek icerikler yer alır.
+
+
+Controllerda Onregin MoviesController olusturdum bunun View'i 
+ise view klasörundeki Movies klasörudur.
+
+
+
+
+
