@@ -5,6 +5,11 @@
 *Dahasonra modelin yolunuda (namespace'i'(Movie.csin yolu)) tanımladım
 *@
 
+@section sidebar {
+    @await Html.PartialAsync("_sidebar")
+    @* list sayfasında _sidebar partial ıda gelicektir *@
+}
+
 <div class="container">
     <h1>Film Listesi</h1>
     <div id="filmler">
