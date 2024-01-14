@@ -18,28 +18,27 @@ namespace MoviesApp.Controllers
         }
 
         //localhost:5000/movies/list
-        public IActionResult List()
+        //localhost:5000/movies/list/id
+        public IActionResult List(int? id)
         {
 
-            var turListesi = new List<Genre>(){
-                new Genre {Name="Comedy"},
-                new Genre {Name="Action"},
-                new Genre {Name="Drama"},
-                new Genre {Name="Romance"},
-                new Genre {Name="War"}
-            };
+            var movies = MovieRepository.Movies;
+            if (id != null)
+            {
+                movies = movies.Where(m => m.GenreId == id).ToList();
+            }
 
             var modeller = new MoviesViewModel()
             {
-                Movies = MovieRepository.Movies,
+                Movies = movies,
             };
             return View(modeller);//list sayfasına modelleri gonderdim
         }
 
         //localhost:5000/movies/details
-        public IActionResult Details()
+        public IActionResult Details(int id)//id 
         {
-            return View();
+            return View(MovieRepository.GetById(id));
         }
     }
 }

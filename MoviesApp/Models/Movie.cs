@@ -8,4 +8,5 @@ public class Movie
     public string Director { get; set; }
     public string[] Actors { get; set; }
     public string ImageUrl { get; set; }
+    public int GenreId { get; set; }
 }

@@ -1,9 +1,10 @@
 ﻿@model List<Genre>
 
 <div class="list-group mt-5">
+    <a href="/movies/list" class="list-group-item list-group-item-action" aria-current="true">Tum Kategoriler</a>
     @foreach (var tur in Model)
     {
-        <a href="#" class="list-group-item list-group-item-action" aria-current="true">
+        <a href="/movies/list/@tur.GenreId" class="list-group-item list-group-item-action" aria-current="true">
             @tur.Name
         </a>
     }

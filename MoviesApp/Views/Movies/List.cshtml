@@ -2,13 +2,21 @@
 <div class="container">
     <h1>Film Listesi</h1>
     <div id="filmler">
-        <div class="film">
+        @if (Model.Movies.Count() > 0)
+        {
             @foreach (var film in Model.Movies)//MovieAndGenreModel icindeki Movies methodundan gelen film listesinde herbir filmi gezicektir.
             {
                 @await Html.PartialAsync("_film", film)
                 @* _film adlı partialsınımı bu sayfaya ekledim ve verileri film adıyla _filme yolladım*@
             }
-        </div>
+        }
+        else
+        {
+            <div class="alert alert-warning">
+                Herhangi bir film bulunamadı.
+            </div>
+
+        }
     </div>
 </div>
 
