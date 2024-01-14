@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using MoviesApp.Data;
 using MoviesApp.Models;
 
 namespace MoviesApp.Controllers
@@ -19,12 +20,6 @@ namespace MoviesApp.Controllers
         //localhost:5000/movies/list
         public IActionResult List()
         {
-            var filmListesi = new List<Movie>()
-            {
-                new Movie {Title = "Film1",Description="A1",Actors=new string[]{"john Doe","Jane Doe"},Director="OmerUlusal",ImageUrl="avengers.jpeg"},
-                new Movie {Title = "Film2",Description="A1",Actors=new string[]{"john Doe","Jane Doe"},Director="OmerUlusal",ImageUrl="avengers.jpeg"},
-                new Movie {Title = "Film3",Description="A1",Actors=new string[]{"john Doe","Jane Doe"},Director="OmerUlusal",ImageUrl="avengers.jpeg"}
-            };
 
             var turListesi = new List<Genre>(){
                 new Genre {Name="Comedy"},
@@ -34,11 +29,9 @@ namespace MoviesApp.Controllers
                 new Genre {Name="War"}
             };
 
-            var modeller = new MovieAndGenreViewModel()
+            var modeller = new MoviesViewModel()
             {
-                Movies = filmListesi,
-                Genres = turListesi
-                //olusturdugum filmleri ve turleri modeller degişkenine atadım.
+                Movies = MovieRepository.Movies,
             };
             return View(modeller);//list sayfasına modelleri gonderdim
         }
