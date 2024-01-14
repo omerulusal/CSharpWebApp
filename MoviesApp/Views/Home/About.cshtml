@@ -1,4 +1,5 @@
-﻿<div class="container">
+﻿@model List<Genre>
+<div class="container">
     <main role="main" class="pb-3">
         <div class="btn btn-primary">
             ABOUT Page
@@ -6,3 +7,6 @@
     </main>
 </div>
 
+@section sidebar {
+    @await Component.InvokeAsync("Genres")
+}

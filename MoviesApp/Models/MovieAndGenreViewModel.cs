@@ -1,6 +1,6 @@
 ﻿namespace MoviesApp.Models;
 
-public class MovieAndGenreModel
+public class MovieAndGenreViewModel
     //bu class icerisinde iki adet liste turunde veri barındırıyor.
     //1. models klasörundeki Movie.cs 2. ise modelsteki Genre.cs listesi
 {

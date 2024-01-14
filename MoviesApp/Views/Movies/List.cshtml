@@ -1,15 +1,4 @@
-﻿@model MovieAndGenreModel;
-
-@*
-*MovieControllerdan List veri tipinde veri göndermiştim onu buradan karşıladım.
-*Dahasonra modelin yolunuda (namespace'i'(Movie.csin yolu)) tanımladım
-*@
-
-@section sidebar {
-    @await Html.PartialAsync("_sidebar",Model.Genres)
-    @* list sayfasında _sidebar partialıda gelicektir ve bu partiala Model.Genres ı yolladım*@
-}
-
+﻿@model MovieAndGenreViewModel;
 <div class="container">
     <h1>Film Listesi</h1>
     <div id="filmler">
@@ -22,3 +11,17 @@
         </div>
     </div>
 </div>
+
+
+@*
+*MovieControllerdan List veri tipinde veri göndermiştim onu buradan karşıladım.
+*Dahasonra modelin yolunuda (namespace'i'(Movie.csin yolu)) tanımladım
+*@
+
+@section sidebar {
+    @* @await Html.PartialAsync("_sidebar", Model.Genres) *@
+    @* list sayfasında _sidebar partialıda gelicektir ve bu partiala Model.Genres ı yolladım*@
+
+    @await Component.InvokeAsync("Genres")
+
+}

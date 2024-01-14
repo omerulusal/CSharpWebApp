@@ -34,7 +34,7 @@ namespace MoviesApp.Controllers
                 new Genre {Name="War"}
             };
 
-            var modeller = new MovieAndGenreModel()
+            var modeller = new MovieAndGenreViewModel()
             {
                 Movies = filmListesi,
                 Genres = turListesi
