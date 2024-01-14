@@ -22,17 +22,22 @@ namespace MoviesApp.Controllers
         public IActionResult List(int? id)
         {
 
+            //var controller = RouteData.Values["controller"];
+            //var action = RouteData.Values["action"];
+            //var genreid = RouteData.Values["id"];
+
+
             var movies = MovieRepository.Movies;
             if (id != null)
             {
                 movies = movies.Where(m => m.GenreId == id).ToList();
             }
 
-            var modeller = new MoviesViewModel()
+            var model = new MoviesViewModel()
             {
                 Movies = movies,
             };
-            return View(modeller);//list sayfasına modelleri gonderdim
+            return View(model);//list sayfasına modeli gonderdim
         }
 
         //localhost:5000/movies/details
