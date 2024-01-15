@@ -64,6 +64,7 @@ public class MoviesController : Controller
         if (ModelState.IsValid)
         {
             MovieRepository.Add(m);//Movie turunde yeni filmi ekledim
+            TempData["Message"] = $"{m.Title} isimli film eklendi.";
             return RedirectToAction("List");//List contorllerına yonlendirdim
         }
         ViewBag.Genres = new SelectList(GenreRepository.Genres, "GenreId", "Name");
@@ -86,5 +87,14 @@ public class MoviesController : Controller
         }
         ViewBag.Genres = new SelectList(GenreRepository.Genres, "GenreId", "Name");
         return View(m);
+    }
+
+
+    [HttpPost]
+    public IActionResult Delete(int MovieId,string Title)
+    {      
+        MovieRepository.Delete(MovieId);
+        TempData["Message"] = $"{Title} isimli film silindi.";
+        return RedirectToAction("List");
     }
 }

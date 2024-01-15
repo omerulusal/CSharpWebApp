@@ -33,3 +33,11 @@
     @await Component.InvokeAsync("Genres")
 
 }
+
+@if (TempData["Message"] != null)
+{
+    @section message
+    {
+    @await Html.PartialAsync("_message", (string)TempData["Message"])
+    }
+}

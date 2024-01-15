@@ -13,19 +13,23 @@ Ozetle sayfanın modeli Movie nesnesi
             <div class="col-md-8">
                 <div class="card-body">
                     <h5 class="card-title">@Model.Title</h5>
-                    <p>
-                        <a asp-route-id="@Model.MovieId" asp-controller="Movies" asp-action="Details" class="btn btn-primary">
+                    <p class="d-flex">
+                        <a asp-route-id="@Model.MovieId" asp-controller="Movies" asp-action="Details" class="btn btn-primary mr-1">
                             Details
                         </a>
-                        <a asp-route-id="@Model.MovieId" asp-controller="Movies" asp-action="Edit" class="btn btn-primary">
+                        <a asp-route-id="@Model.MovieId" asp-controller="Movies" asp-action="Edit" class="btn btn-warning mr-1">
                             Edit
                         </a>
+                        <form asp-controller="Movies" asp-action="Delete" method="post">
+                            <input type="hidden" name="Title" value="@Model.Title" />
+                            <input type="hidden" name="MovieId" value="@Model.MovieId" />
+                            <button type="submit" value="Delete" class="btn btn-danger">Delete</button>
+                        </form>
                     </p>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
 
 
