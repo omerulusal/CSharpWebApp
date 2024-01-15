@@ -19,7 +19,7 @@ Ozetle sayfanın modeli Movie nesnesi
     @foreach (var item in Model.PopularMovies)
     {
         @await Html.PartialAsync("_film", item)
-    })
+    }
     @*
     _film adlı partialsınımı bu sayfaya ekledim ve _filme Movie modelini Model adıyla yolladım
     *@

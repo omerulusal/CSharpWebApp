@@ -51,5 +51,16 @@ namespace MoviesApp.Controllers
         {
             return View(MovieRepository.GetById(id));
         }
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]//film eklerken create sayfasında post metodu kullandım
+        public IActionResult Create(Movie m)
+        {
+            MovieRepository.Add(m);//Movie turunde yeni filmi ekledim
+            return RedirectToAction("List");//List contorllerına yonlendirdim
+        }
     }
 }
