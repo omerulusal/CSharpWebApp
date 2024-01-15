@@ -31,5 +31,22 @@ namespace MoviesApp.Data
         {
             return _movies.FirstOrDefault(m => m.MovieId == id);
         }
+
+        public static void Edit(Movie m)
+        {
+            foreach (var movie in _movies)//movies listesindeki herbir movie'yi dondum
+            {
+                if (movie.MovieId==m.MovieId)
+                {
+                    movie.Title = m.Title;
+                    movie.Description = m.Description;
+                    movie.Director = m.Director;
+                    movie.GenreId = m.GenreId;
+                    movie.ImageUrl = m.ImageUrl;
+                    movie.Actors = m.Actors;
+                    break;
+                }
+            }
+        }
     }
 }

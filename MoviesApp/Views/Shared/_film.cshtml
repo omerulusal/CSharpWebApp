@@ -14,8 +14,11 @@ Ozetle sayfanın modeli Movie nesnesi
                 <div class="card-body">
                     <h5 class="card-title">@Model.Title</h5>
                     <p>
-                        <a href="/movies/details/@Model.MovieId" class="btn btn-primary">
-                            Content
+                        <a asp-route-id="@Model.MovieId" asp-controller="Movies" asp-action="Details" class="btn btn-primary">
+                            Details
+                        </a>
+                        <a asp-route-id="@Model.MovieId" asp-controller="Movies" asp-action="Edit" class="btn btn-primary">
+                            Edit
                         </a>
                     </p>
                 </div>
