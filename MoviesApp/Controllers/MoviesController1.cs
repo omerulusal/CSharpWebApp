@@ -61,21 +61,30 @@ public class MoviesController : Controller
     [HttpPost]//film eklerken create sayfasında post metodu kullandım
     public IActionResult Create(Movie m)
     {
-        MovieRepository.Add(m);//Movie turunde yeni filmi ekledim
-        return RedirectToAction("List");//List contorllerına yonlendirdim
+        if (ModelState.IsValid)
+        {
+            MovieRepository.Add(m);//Movie turunde yeni filmi ekledim
+            return RedirectToAction("List");//List contorllerına yonlendirdim
+        }
+        ViewBag.Genres = new SelectList(GenreRepository.Genres, "GenreId", "Name");
+        return View();
     }
 
     public IActionResult Edit(int id)
     {
-        ViewBag.Genres = new SelectList(GenreRepository.Genres,"GenreId","Name");
+        ViewBag.Genres = new SelectList(GenreRepository.Genres, "GenreId", "Name");
         return View(MovieRepository.GetById(id));
     }
 
     [HttpPost]
     public IActionResult Edit(Movie m)
     {
-        MovieRepository.Edit(m);
-        // /movies/details/1
-        return RedirectToAction("Details", "Movies", new { @id = m.MovieId });
+        if (ModelState.IsValid)
+        {
+            MovieRepository.Edit(m);
+            return RedirectToAction("Details", "Movies", new { @id = m.MovieId });
+        }
+        ViewBag.Genres = new SelectList(GenreRepository.Genres, "GenreId", "Name");
+        return View(m);
     }
 }
