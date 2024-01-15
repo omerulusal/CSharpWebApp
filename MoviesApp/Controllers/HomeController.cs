@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using MoviesApp.Data;
+using MoviesApp.Entity;
 using MoviesApp.Models;
 using System.Diagnostics;
 

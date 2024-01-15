@@ -1,4 +1,4 @@
-﻿namespace MoviesApp.Models;
+﻿namespace MoviesApp.Entity;
 
 public class Genre
 {

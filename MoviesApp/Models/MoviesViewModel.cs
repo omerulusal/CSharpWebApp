@@ -1,4 +1,6 @@
-﻿namespace MoviesApp.Models;
+﻿using MoviesApp.Entity;
+
+namespace MoviesApp.Models;
 
 public class MoviesViewModel
     //bu class icerisinde iki adet liste turunde veri barındırıyor.

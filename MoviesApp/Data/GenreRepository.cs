@@ -1,4 +1,5 @@
-﻿using MoviesApp.Models;
+﻿using MoviesApp.Entity;
+using MoviesApp.Models;
 using System.Collections.Generic;
 using System.Linq;
 namespace MoviesApp.Data

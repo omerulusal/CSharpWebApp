@@ -1,4 +1,6 @@
-﻿namespace MoviesApp.Models;
+﻿using MoviesApp.Entity;
+
+namespace MoviesApp.Models;
 
 public class HomePageViewModel
 {
