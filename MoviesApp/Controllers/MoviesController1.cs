@@ -19,7 +19,7 @@ namespace MoviesApp.Controllers
 
         //localhost:5000/movies/list
         //localhost:5000/movies/list/id
-        public IActionResult List(int? id)
+        public IActionResult List(int? id, string q)
         {
 
             //var controller = RouteData.Values["controller"];
@@ -31,6 +31,12 @@ namespace MoviesApp.Controllers
             if (id != null)
             {
                 movies = movies.Where(m => m.GenreId == id).ToList();
+            }
+            if (!string.IsNullOrEmpty(q))
+            {
+                movies = movies.Where(m =>
+                    m.Title.ToLower().Contains(q.ToLower()) ||
+                    m.Description.ToLower().Contains(q.ToLower())).ToList();
             }
 
             var model = new MoviesViewModel()
