@@ -11,9 +11,9 @@ namespace MoviesApp.Data
         {
             _movies = new()
             {
-                new (){MovieId = 1, Title = "The Godfather",Description="GodFatherDesc",Director="Omer",Actors=new string[]{"Oyuncu1", "Oyuncu2" },ImageUrl="avengers.jpeg",GenreId=1 },
-                new (){MovieId= 2, Title= "The Dark Knight",Description="Dark Knight",Director="Omer",Actors= new string[]{ "Oyuncu1" , "Oyuncu2" } ,ImageUrl="avengers.jpeg",GenreId = 2 },
-                new (){MovieId= 3, Title= "Forrest Gump",Description="ForestDesc",Director="Omer",Actors= new string[]{ "Oyuncu1" , "Oyuncu2" } ,ImageUrl="avengers.jpeg" , GenreId = 3},
+                new (){MovieId = 1, Title = "The Godfather",Description="GodFatherDesc",Director="Omer",ImageUrl="avengers.jpeg",GenreId=1 },
+                new (){MovieId= 2, Title= "The Dark Knight",Description="Dark Knight",Director="Omer" ,ImageUrl="avengers.jpeg",GenreId = 2 },
+                new (){MovieId= 3, Title= "Forrest Gump",Description="ForestDesc",Director="Omer" ,ImageUrl="avengers.jpeg" , GenreId = 3},
             };
         }
         public static List<Movie> Movies
@@ -44,7 +44,6 @@ namespace MoviesApp.Data
                     movie.Director = m.Director;
                     movie.GenreId = m.GenreId;
                     movie.ImageUrl = m.ImageUrl;
-                    movie.Actors = m.Actors;
                     break;
                 }
             }

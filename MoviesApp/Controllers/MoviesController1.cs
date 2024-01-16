@@ -9,6 +9,11 @@ namespace MoviesApp.Controllers;
 public class MoviesController : Controller
 
 {
+    private readonly MovieContext _context;
+    public MoviesController(MovieContext context)
+    {
+        _context = context;
+    }
 
     /*
      normalde localhost:5000/movies yazarsam sayfa bulunamadı hatası alırdım cunku urlde en az 2 bolme 
@@ -64,7 +69,9 @@ public class MoviesController : Controller
     {
         if (ModelState.IsValid)
         {
-            MovieRepository.Add(m);//Movie turunde yeni filmi ekledim
+            //MovieRepository.Add(m);//Movie turunde yeni filmi ekledim
+            _context.Movies.Add(m);
+            _context.SaveChanges();
             TempData["Message"] = $"{m.Title} isimli film eklendi.";
             return RedirectToAction("List");//List contorllerına yonlendirdim
         }

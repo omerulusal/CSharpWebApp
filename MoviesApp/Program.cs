@@ -1,7 +1,14 @@
+using Microsoft.EntityFrameworkCore;
+using MoviesApp.Data;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();
+
+// SQLite veritabaný baðlantýsýný ekleyin
+builder.Services.AddDbContext<MovieContext>(options =>
+    options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 var app = builder.Build();
 
@@ -22,8 +29,8 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}"
-    );
-//!Uygulama acýldýgýnda Default olarak HomeController.csteki Index calýþýr 
-//!fakat controller ve action dinamik rota yani urlde diyelimki about yazdým uygulama about sayfasýný acar
+    pattern: "{controller=Home}/{action=Index}/{id?}");
+
+// Uygulama açýldýðýnda Default olarak HomeController.cs'teki Index çalýþýr
+// Fakat controller ve action dinamik rota yani URL'de diyelim ki about yazdým uygulama about sayfasýný açar
 app.Run();
