@@ -34,21 +34,23 @@ public class MoviesController : Controller
         //var genreid = RouteData.Values["id"];
 
 
-        var movies = MovieRepository.Movies;
+        //var movies = MovieRepository.Movies;
+        var movies= _context.Movies.AsQueryable();
+
         if (id != null)
         {
-            movies = movies.Where(m => m.GenreId == id).ToList();
+            movies = movies.Where(m => m.GenreId == id);
         }
         if (!string.IsNullOrEmpty(q))
         {
             movies = movies.Where(m =>
                 m.Title.ToLower().Contains(q.ToLower()) ||
-                m.Description.ToLower().Contains(q.ToLower())).ToList();
+                m.Description.ToLower().Contains(q.ToLower()));
         }
 
         var model = new MoviesViewModel()
         {
-            Movies = movies,
+            Movies = movies.ToList(),
         };
         return View(model);//list sayfasına modeli gonderdim
     }
@@ -56,11 +58,11 @@ public class MoviesController : Controller
     //localhost:5000/movies/details
     public IActionResult Details(int id)//id 
     {
-        return View(MovieRepository.GetById(id));
+        return View(_context.Movies.Find(id));
     }
     public IActionResult Create()
     {
-        ViewBag.Genres = new SelectList(GenreRepository.Genres, "GenreId", "Name");
+        ViewBag.Genres = new SelectList(_context.Genres.ToList(), "GenreId", "Name");
         return View();
     }
 
@@ -75,14 +77,14 @@ public class MoviesController : Controller
             TempData["Message"] = $"{m.Title} isimli film eklendi.";
             return RedirectToAction("List");//List contorllerına yonlendirdim
         }
-        ViewBag.Genres = new SelectList(GenreRepository.Genres, "GenreId", "Name");
+        ViewBag.Genres = new SelectList(_context.Genres.ToList(), "GenreId", "Name");
         return View();
     }
 
     public IActionResult Edit(int id)
     {
-        ViewBag.Genres = new SelectList(GenreRepository.Genres, "GenreId", "Name");
-        return View(MovieRepository.GetById(id));
+        ViewBag.Genres = new SelectList(_context.Genres.ToList(), "GenreId", "Name");
+        return View(_context.Movies.Find(id));
     }
 
     [HttpPost]
@@ -90,18 +92,23 @@ public class MoviesController : Controller
     {
         if (ModelState.IsValid)
         {
-            MovieRepository.Edit(m);
+            //MovieRepository.Edit(m);
+            _context.Movies.Update(m);
+            _context.SaveChanges();
             return RedirectToAction("Details", "Movies", new { @id = m.MovieId });
         }
-        ViewBag.Genres = new SelectList(GenreRepository.Genres, "GenreId", "Name");
+        ViewBag.Genres = new SelectList(_context.Genres.ToList(), "GenreId", "Name");
         return View(m);
     }
 
 
     [HttpPost]
     public IActionResult Delete(int MovieId,string Title)
-    {      
-        MovieRepository.Delete(MovieId);
+    {
+        //MovieRepository.Delete(MovieId);
+        var entity = _context.Movies.Find(MovieId);
+        _context.Movies.Remove(entity);
+        _context.SaveChanges();
         TempData["Message"] = $"{Title} isimli film silindi.";
         return RedirectToAction("List");
     }

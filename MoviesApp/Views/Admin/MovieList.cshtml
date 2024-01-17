@@ -1,0 +1,31 @@
+﻿@model AdminMoviesViewModel
+
+<h1>Admin Movie List</h1>
+
+
+<table class="table table-bordered table-striped table-hover">
+    <thead>
+        <tr>
+            <th scope="col" style="width:30px">#</th>
+            <th scope="col" style="width:100px">Image</th>
+            <th scope="col" style="width:50px">Title</th>
+            <th scope="col" style="width:150px">Description</th>
+            <th scope="col" style="width:160px"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var movie in Model.Movies)
+        {
+            <tr>
+                <td>@movie.MovieId</td>
+                <td><img src="/img/@movie.ImageUrl" width="50" /></td>
+                <td>@movie.Title</td>
+                <td>@movie.Description</td>
+                <td>
+                    <a class="btn btn-primary btn-sm" href="/admin/movieupdate/@movie.MovieId">Update</a>
+                    <a class="btn btn-primary btn-sm" href="/admin/moviedelete/@movie.MovieId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
