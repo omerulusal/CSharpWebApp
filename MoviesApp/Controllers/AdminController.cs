@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ViewComponents;
 using Microsoft.EntityFrameworkCore;
 using MoviesApp.Data;
 using MoviesApp.Models;
@@ -37,6 +38,7 @@ namespace MoviesApp.Controllers
                 ImageUrl = mx.ImageUrl,
             }).FirstOrDefault(me => me.MovieId == id);
 
+            ViewBag.Genres = _context.Genres.ToList();
             if (entity == null)
             {
                 return NotFound();
