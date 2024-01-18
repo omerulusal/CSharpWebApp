@@ -7,24 +7,27 @@ using System.Linq;
 
 namespace MoviesApp.Controllers;
 
-public class HomeController : Controller
+public class HomeController : Controller //HomeController,Controller sýnýfýndan türetilmiþtir,
 {
 
 
     private readonly MovieContext _context;
     public HomeController(MovieContext context)
+    //contructor oluþturdum MovieContext tipinde context parametresi alýr
     {
         _context = context;
+        //MovieContextin ornegi alýnýp _context degiskenine atandý _context Dbyi temsil eder
     }
 
 
-    public IActionResult Index()
+    public IActionResult Index()//Home klasörundeki Index.cshtml calýþýr
     {
         var model = new HomePageViewModel
         {
             PopularMovies = _context.Movies.ToList()
+            //HomePageViewModeldeki PopularMovies = _context ile Dbdeki Movies Tablosunun listelenmiþ hali
         };
-        return View(model);
+        return View(model);//oluþturulan yeni model index.cshtmlye gonderilir.
     }
     public IActionResult About()
     {
@@ -35,6 +38,6 @@ public class HomeController : Controller
                 new Genre {Name="Romance"},
                 new Genre {Name="War"}
             };
-        return View(turListesi);
+        return View(turListesi);//oluþturulan yeni turListesi About.cshtmlye gonderilir.
     }
 }

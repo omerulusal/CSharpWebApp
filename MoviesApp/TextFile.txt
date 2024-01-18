@@ -1,8 +1,46 @@
-﻿wwwroot ozel bir klasör adıdır burada client tarafında gorunecek icerikler yer alır.
+﻿-->KLASÖRLER
+
+Properties: proje özelliklerini tanımlayan dosyaları içerir. 
+
+wwwroot: web uygulamasının kök dizininde yer alan ve istemcilere (tarayıcılar) sunulan statik dosyaları içerir. 
+Örneğin, CSS dosyaları, JavaScript dosyaları, resimler vb.
 
 
-Controllerda Onregin MoviesController olusturdum bunun View'i 
-ise view klasörundeki Movies klasörudur.
+Controllers: MVC modelinde yer alan controller classlarını içerir. Controllerlar, gelen HTTP isteklerini işler, 
+veri modelini alır ve ilgili View'i çağırarak kullanıcıya sunar.
+
+
+Data: Veri erişim katmanında(DAL) kullanılan classları içerir. Örneğin, veritabanına erişim sağlayan DbContext classları. 
+DB işlemleri ve Entity Framework kullanımı genellikle bu klasör altında yer alır.
+
+
+Entity: Veri modeli (entity) classlarını içerir. Bu classlar DBdeki tabloları temsil eder. Entity Frameworkte, bu classlar DbContext ile ilişkilidir.
+
+
+Migrations:Veritabanı şemalarındaki değişiklikleri yöneten Migration dosyalarını içerir. Migration'lar, DB'i güncellemek veya geri almak için kullanılır.
+
+
+Models: Uygulamanın genel veri modeli classlarını içerir. Bu classlar, uygulamanın içinde kullanılan nesneleri temsil eder.
+
+
+ViewComponents: Bir sayfanın belirli bir bölümünü temsil eden ve genellikle yeniden kullanılabilir olan bileşenlerdir.
+
+
+Views: Kullanıcılara gösterilen HTML, CSS ve C# kodunu içerir. Burada controller classlarından çağrılan ve kullanıcılara gösterilen sayfalar yer alır.
+Shared: Viewsin alt klasörudur icerisinde Layout gibi bileşenler bulunur.
+
+<---
+
+
+---> 
+
+
+
+
+
+
+<---
+
 
 
 

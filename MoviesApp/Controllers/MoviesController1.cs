@@ -25,44 +25,40 @@ public class MoviesController : Controller
     }
 
     //localhost:5000/movies/list
-    //localhost:5000/movies/list/id
     public IActionResult List(int? id, string q)
     {
-
-        //var controller = RouteData.Values["controller"];
-        //var action = RouteData.Values["action"];
-        //var genreid = RouteData.Values["id"];
-
-
-        //var movies = MovieRepository.Movies;
         var movies= _context.Movies.AsQueryable();
 
         if (id != null)
         {
             movies = movies.Where(m => m.GenreId == id);
+            //dbden gelen filmlerin icerisinden GenreId si param olarak gelen idye esit olanı alıç movies a atadım
         }
-        if (!string.IsNullOrEmpty(q))
+        if (!string.IsNullOrEmpty(q))//sorgu param boş degilse calısır.
         {
             movies = movies.Where(m =>
                 m.Title.ToLower().Contains(q.ToLower()) ||
                 m.Description.ToLower().Contains(q.ToLower()));
+
+            //dbden gelen Title veya Description propertylerinin kucuk harfe cevrilmiş halini alıp q parametresi ile karsılastırılır
         }
 
         var model = new MoviesViewModel()
         {
-            Movies = movies.ToList(),
+            Movies = movies.ToList(),//MoviesViewModel in Movies Propertysi = Dbdeki moviesin listelenmiş hali
         };
-        return View(model);//list sayfasına modeli gonderdim
+        return View(model);
     }
 
-    //localhost:5000/movies/details
-    public IActionResult Details(int id)//id 
+    public IActionResult Details(int id)
     {
         return View(_context.Movies.Find(id));
     }
     public IActionResult Create()
     {
         ViewBag.Genres = new SelectList(_context.Genres.ToList(), "GenreId", "Name");
+        // _context.Genres.ToList(): Veritabanından tüm film türlerini liste olarak alır.
+        // "GenreId", "Name": SelectList için kullanılacak değerlerin belirlenmesi.
         return View();
     }
 
@@ -71,7 +67,6 @@ public class MoviesController : Controller
     {
         if (ModelState.IsValid)
         {
-            //MovieRepository.Add(m);//Movie turunde yeni filmi ekledim
             _context.Movies.Add(m);
             _context.SaveChanges();
             TempData["Message"] = $"{m.Title} isimli film eklendi.";
@@ -87,12 +82,11 @@ public class MoviesController : Controller
         return View(_context.Movies.Find(id));
     }
 
-    [HttpPost]
+    [HttpPost] //action metodunun yalnızca HTTP POST isteklerine yanıt vermesini sağlar.
     public IActionResult Edit(Movie m)
     {
         if (ModelState.IsValid)
         {
-            //MovieRepository.Edit(m);
             _context.Movies.Update(m);
             _context.SaveChanges();
             return RedirectToAction("Details", "Movies", new { @id = m.MovieId });
@@ -105,7 +99,6 @@ public class MoviesController : Controller
     [HttpPost]
     public IActionResult Delete(int MovieId,string Title)
     {
-        //MovieRepository.Delete(MovieId);
         var entity = _context.Movies.Find(MovieId);
         _context.Movies.Remove(entity);
         _context.SaveChanges();
@@ -113,3 +106,6 @@ public class MoviesController : Controller
         return RedirectToAction("List");
     }
 }
+
+//TempData, bir istekten diğerine veri taşımak için kullanılır.
+//ViewBag: controller action'ından view'e veri geçişini sağlar.
