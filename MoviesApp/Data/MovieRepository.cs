@@ -7,7 +7,8 @@ namespace MoviesApp.Data;
 public class MovieRepository
 {
     private static readonly List<Movie> _movies = null;
-    static MovieRepository()
+    //_movies, Liste olarak film verilerini içerir,readonly olduğu için sadece bir kere başlatılabilir.
+    static MovieRepository()//constructor metod _movies listesini başlatır ve başlangıç verilerini içerir.
     {
         _movies = new()
         {
@@ -20,7 +21,7 @@ public class MovieRepository
     {
         get
         {
-            return _movies;
+            return _movies; //_movies listesine dışarıdan erişim sağlar.
         }
     }
     public static void Add(Movie movie)
@@ -31,13 +32,14 @@ public class MovieRepository
     public static Movie GetById(int id)
     {
         return _movies.FirstOrDefault(m => m.MovieId == id);
+        //disarıdan gelen id paramının _moviestaki herhangi bir filmin idsine eşit olup olmadıgını kontrol eder.
     }
 
     public static void Edit(Movie m)
     {
         foreach (var movie in _movies)//movies listesindeki herbir movie'yi dondum
         {
-            if (movie.MovieId==m.MovieId)
+            if (movie.MovieId == m.MovieId)
             {
                 movie.Title = m.Title;
                 movie.Description = m.Description;
