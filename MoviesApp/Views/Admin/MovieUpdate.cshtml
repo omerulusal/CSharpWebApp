@@ -1,7 +1,10 @@
 ﻿@model AdminEditMovieViewModel
+@* @model: sayfa tarafından kullanılacak olan veri yapısını temsil eder. *@
 
 <h1> Edit Movie </h1>
 <hr />
+@* asp-controller ve asp-action bu formun hangi controller ve action ile ilişkilendirildiğini belirtir. *@
+@* form, AdminController.cs deki MovieUpdate metoduna yonlendirir *@
 
 <form method="post" asp-controller="Admin" asp-action="MovieUpdate">
     <div class="row">

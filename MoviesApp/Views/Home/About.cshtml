@@ -1,12 +1,14 @@
 ﻿@model List<Genre>
+@* Genre classının bir listesi kullanılacak (Henuz kullanmadım) *@
 <div class="container">
     <main role="main" class="pb-3">
         <div class="btn btn-primary">
-            ABOUT Page
+            ABOUT Sayfası Henuz Tamamlanmadı.
         </div>
     </main>
 </div>
 
 @section sidebar {
     @await Component.InvokeAsync("Genres")
+    @* "Genres" adlı bir view component'ını(Shared>Components>Genres) asenkron olarak çağırır ve gösterir. *@
 }

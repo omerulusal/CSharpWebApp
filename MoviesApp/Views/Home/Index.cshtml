@@ -1,13 +1,7 @@
 ﻿@model HomePageViewModel;
-@*
-HomeControllerdaki modeli cagırdım fakat model klasorunde olusturdugum Movie classınıda yazdım.
-Normalde MovieApp.Models.Movie olarak cagırmam gerekirdi bu yolu kısatmak icin _ViewImports dosyasına yazdım.
-Ozetle sayfanın modeli Movie nesnesi
-*@
-
 @section jumbo {
     @await Html.PartialAsync("_jumboSection")
-    @* 
+    @*
         _jumboSection adlı cshtml kodunu sectiona cevirdim bunu _Layout.cshtmlde kullanacagım.
     *@
 }
@@ -21,8 +15,8 @@ Ozetle sayfanın modeli Movie nesnesi
         @await Html.PartialAsync("_film", item)
     }
     @*
-    _film adlı partialsınımı bu sayfaya ekledim ve _filme Movie modelini Model adıyla yolladım
+    her bir film için _film adlı partial view'ı async olarak çağırır.
+    Her bir film, item  aracılığıyla _film partial view'ına iletilir.
     *@
 
 </div>
-
