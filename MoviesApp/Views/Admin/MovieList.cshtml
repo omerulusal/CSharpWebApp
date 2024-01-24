@@ -21,7 +21,8 @@
                 <td>@movie.MovieId</td>
                 <td><img src="/img/@movie.ImageUrl" width="50" /></td>
                 <td>@movie.Title</td>
-                <td>@movie.Description</td>
+                <td>@movie.Description.Substring(0, 50)...</td>
+                @* uzun olan acıklama yazılarını kısalttım *@
                 <td>
                     <a class="btn btn-primary btn-sm" href="/admin/movieupdate/@movie.MovieId">Update</a>
                     <a class="btn btn-primary btn-sm" href="/admin/moviedelete/@movie.MovieId">Delete</a>
