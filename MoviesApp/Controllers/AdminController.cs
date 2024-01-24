@@ -61,6 +61,7 @@ namespace MoviesApp.Controllers
         public IActionResult MovieUpdate(AdminMovieViewModel model)
         {
             var entity = _context.Movies.Find(model.MovieId);
+            //Movies tablosu icerisinden gelen MovieId degerine gore veriyi bulur
             entity.Title = model.Title;
             entity.Description = model.Description;
             entity.ImageUrl = model.ImageUrl;
@@ -72,5 +73,3 @@ namespace MoviesApp.Controllers
 }
 
 //private readonly:_context değişkeninin sadece bu classta erişilebilir ve değerinin değiştirilemeyeceğini belirtir. 
-
-

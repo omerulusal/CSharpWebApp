@@ -32,17 +32,3 @@ Shared: Viewsin alt klasörudur icerisinde Layout gibi bileşenler bulunur.
 <---
 
 
----> 
-
-
-
-
-
-
-<---
-
-
-
-
-
-
