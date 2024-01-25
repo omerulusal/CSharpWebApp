@@ -26,8 +26,8 @@ public class MovieRepository
     }
     public static void Add(Movie movie)
     {
-        movie.MovieId = _movies.Count() + 1;
-        _movies.Add(movie);
+        movie.MovieId = _movies.Count() + 1;//film id sini arttırdım ki çakışma olmasın
+        _movies.Add(movie);//gelen filmi _movies listesine ekledim
     }
     public static Movie GetById(int id)
     {

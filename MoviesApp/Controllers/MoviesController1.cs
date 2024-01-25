@@ -32,7 +32,7 @@ public class MoviesController : Controller
         if (id != null)
         {
             movies = movies.Where(m => m.GenreId == id);
-            //dbden gelen filmlerin icerisinden GenreId si param olarak gelen idye esit olanı alıç movies a atadım
+            //dbden gelen filmlerin icerisinden GenreId si param olarak gelen idye esit olanı alıp movies a atadım
         }
         if (!string.IsNullOrEmpty(q))//sorgu param boş degilse calısır.
         {
@@ -53,6 +53,7 @@ public class MoviesController : Controller
     public IActionResult Details(int id)
     {
         return View(_context.Movies.Find(id));
+        //disarıdan girdigim id ye ait filmi bul ve Details.cshtml sayfasına yolla
     }
     public IActionResult Create()
     {
@@ -67,8 +68,8 @@ public class MoviesController : Controller
     {
         if (ModelState.IsValid)
         {
-            _context.Movies.Add(m);
-            _context.SaveChanges();
+            _context.Movies.Add(m);//db deki movies tablosuna gelen filmi ekledim
+            _context.SaveChanges();//ekledikten sonra kaydettim
             TempData["Message"] = $"{m.Title} isimli film eklendi.";
             return RedirectToAction("List");//List contorllerına yonlendirdim
         }
@@ -87,7 +88,7 @@ public class MoviesController : Controller
     {
         if (ModelState.IsValid)
         {
-            _context.Movies.Update(m);
+            _context.Movies.Update(m);//dbdeki movies tablosuna gelen filmi gunceller
             _context.SaveChanges();
             return RedirectToAction("Details", "Movies", new { @id = m.MovieId });
         }
